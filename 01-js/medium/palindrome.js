@@ -4,7 +4,29 @@
 */
 
 function isPalindrome(str) {
-  return true;
+  const lowerStr = str.toLowerCase();
+  let left = 0;
+  let right = lowerStr.length - 1;
+
+  const isAlphanumeric = (char) => /[a-z0-9]/.test(char);
+  while (left < right) {
+    while (!isAlphanumeric(lowerStr[left]) && left < right) {
+      left++;
+    }
+
+    while (!isAlphanumeric(lowerStr[right]) && left < right) {
+      right--;
+    }
+
+    if (lowerStr[left] !== lowerStr[right]) {
+      return false;
+    }
+
+    left++;
+    right--;
+  }
+
+  return true; 
 }
 
 module.exports = isPalindrome;

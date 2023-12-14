@@ -3,6 +3,8 @@
 */
 
 function wait(n) {
+    let prom = new Promise(n);
+    return prom;
 }
 
 module.exports = wait;
