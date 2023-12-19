@@ -1,21 +1,34 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const data = {
-    "Name": "Mukul",
-    "Kaam ": "Krle"
+const locdata = {
+  "Name": "Mukul",
+  "Kaam ": "Krle"
+}
+
+async function getFakeData() {
+  const fakedata = await fetch("https://fakerapi.it/api/v1/persons");
+  const response = await fakedata.json;
+  console.log(response);
+  return response;
 }
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('<h1>Hello World!</h1>')
 })
 
 app.get('/data', (req, res) => {
-    res.send(data)
-  })
+  res.send(locdata)
+})
 
 app.get('/port', (req, res) => {
-    res.send("Port "+port)
+  res.send("Port " + port)
+})
+
+app.get('/fakeData', (req, res) => {
+  var fakedata = getFakeData();
+
+  res.send(fakedata);
 })
 
 app.listen(port, () => {

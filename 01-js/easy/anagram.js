@@ -9,3 +9,24 @@ function isAnagram(str1, str2) {
 }
 
 module.exports = isAnagram;
+
+
+
+var obj1 = {
+  sayName: function () {        //ES5
+    console.log(this);          //Object
+    function getName() {
+      console.log(this);        //Window
+    }
+    getName();
+  },
+  sayAge: function () {         //ES6
+    console.log(this);          //Object
+    const age = () => {
+      console.log(this.age);    //Object
+    }
+    age();
+  },
+  name: "Aman",
+  age: 26,
+}
