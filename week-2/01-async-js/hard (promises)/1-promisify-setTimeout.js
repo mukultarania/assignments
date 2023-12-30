@@ -3,7 +3,11 @@
 */
 
 function wait(n) {
-    let prom = new Promise(n);
+    let prom = new Promise(res => {
+        setTimeout(() => {
+            res();
+        }, n*1000);
+    });
     return prom;
 }
 
